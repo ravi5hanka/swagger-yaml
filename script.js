@@ -1,1 +1,1 @@
-alert(document.domain + "Hello u have been hacked!");
+alert(document.domain + "\n" + "Hello u have been hacked!");
