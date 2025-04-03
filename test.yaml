@@ -1,39 +1,15 @@
 swagger: '2.0'
 info:
-  title: XSS Test API - Security Assessment
+  title: XSS test
   description: |
-    <script>alert("XSS in API Description")</script>
-    <img src=x onerror=alert("onerror-XSS")>
-    <svg/onload=alert("SVG-XSS")>
-  version: 1.0.0
-host: test.example.com
-basePath: /v1
-schemes:
-  - http
-produces:
-  - application/json
-consumes:
-  - application/json
+    <math><mtext><h1><a><h6></a></h6><mglyph><svg><mtext><textarea>
+    <a title='</textarea><img src onerror=alert("Hello")>'></textarea>
+    </h1>">"</textarea></desc></textarea></mtext></mtext></svg></mglyph>
+    </option></mtext></math>
+  version: production
 paths:
-  /xss-test/{input}:
+  /test:
     get:
-      tags:
-        - XSS-Test
-      summary: XSS Test Endpoint
-      description: |
-        <iframe src="javascript:alert('XSS in Endpoint Description')"></iframe>
-      parameters:
-        - name: input
-          in: path
-          description: |
-            <img src=1 onerror=alert("XSS in Parameter Desc")>
-            <math><maction actiontype="statusline#http://example.com" xlink:href="javascript:alert('Maction-XSS')"></math>
-          required: true
-          type: string
       responses:
         '200':
-          description: |
-            <object data="data:text/html;base64,PHNjcmlwdD5hbGVydCgnT2JqZWN0LVhTUycpOzwvc2NyaXB0Pg=="></object>
-securityDefinitions:
-  basicAuth:
-    type: basic
+          description: Test endpoint
