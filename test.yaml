@@ -1,15 +1,23 @@
 swagger: '2.0'
 info:
-  title: XSS test
+  title: XSS Test
   description: |
     <math><mtext><h1><a><h6></a></h6><mglyph><svg><mtext><textarea>
-    <a title='</textarea><img src onerror=alert("Hello")>'></textarea>
+    <a title='</textarea><img src=x onerror=alert("Hello")>'></textarea>
     </h1>">"</textarea></desc></textarea></mtext></mtext></svg></mglyph>
     </option></mtext></math>
-  version: production
+  version: 1.0.0
 paths:
   /test:
     get:
+      parameters:
+        - name: payload
+          in: query
+          description: |
+            <script>alert(1)</script>
+            <img src=x onerror=alert("XSS")>
+          type: string
       responses:
         '200':
-          description: Test endpoint
+          description: |
+            <svg/onload=alert("Hello")>
